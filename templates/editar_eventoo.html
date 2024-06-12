@@ -1,0 +1,24 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<h1>Editar Evento</h1>
+
+<form action="{{ url_for('editar_eventoo', evento_id=evento_id) }}" method="post">
+  <div class="mb-3">
+    <label for="data" class="form-label">Data</label>
+    <input type="date" class="form-control" id="data" name="data" value="{{ evento[0] }}">
+  </div>
+  <div class="mb-3">
+    <label for="descricao" class="form-label">Descrição</label>
+    <textarea class="form-control" id="descricao" name="descricao" rows="3">{{ evento[1] }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="tipo" class="form-label">Tipo</label>
+    <select class="form-control" id="tipo" name="tipo">
+      <option value="Aula" {% if evento[2] =='Aula' %}selected{% endif %}>Aula</option>
+      <option value="Evento" {% if evento[2] =='Evento' %}selected{% endif %}>Evento</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+{% endblock %}

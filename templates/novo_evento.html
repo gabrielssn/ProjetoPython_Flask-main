@@ -1,0 +1,24 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<h1>Adicionar Evento</h1>
+
+<form action="{{ url_for('criar_evento') }}" method="post">
+  <div class="mb-3">
+    <label for="data" class="form-label">Data</label>
+    <input type="date" class="form-control" id="data" name="data">
+  </div>
+  <div class="mb-3">
+    <label for="descricao" class="form-label">Descrição</label>
+    <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="tipo" class="form-label">Tipo</label>
+    <select class="form-control" id="tipo" name="tipo">
+      <option value="Aula">Aula</option>
+      <option value="Evento">Evento</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% endblock %}

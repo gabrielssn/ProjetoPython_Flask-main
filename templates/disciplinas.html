@@ -1,0 +1,38 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<h1>Disciplinas</h1>
+
+<table class="table table-striped table-responsive table-bordered">
+  <thead class="thead-default">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Título</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">Carga Horária</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for termo in glossario %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ termo[0] }}</td>
+      <td>{{ termo[1] }}</td>
+      <td>
+        <form method="post" action="{{ url_for('editar_carga_horaria', termo_id=loop.index0) }}">
+          <input type="number" name="carga_horaria" value="{{ termo[2] }}" min="0">
+          <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+      </td>
+      <td>
+        <form method="post" action="{{ url_for('excluir_termo', termo_id=loop.index0) }}">
+          <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}
